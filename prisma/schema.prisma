@@ -11,33 +11,33 @@ datasource db {
 }
 
 model Tweet {
-  id Int @id @default(autoincrement())
-  text String
-  createdAt DateTime @default(now())
+  id        Int       @id @default(autoincrement())
+  text      String
+  createdAt DateTime  @default(now())
   // updatedAt DateTime @updatedAt
-  authorId Int
-  author User @relation(fields: [authorId], references: [id])
-  comments Comment[]
+  authorId  Int
+  author    User      @relation(fields: [authorId], references: [id])
+  comments  Comment[]
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
-  password String
-  createdAt DateTime @default(now())
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
   // updatedAt DateTime @updatedAt
-  tweets Tweet[]
-  comments Comment[]
+  tweets    Tweet[]
+  comments  Comment[]
 }
 
 model Comment {
-  id Int @id @default(autoincrement())
-  text String
+  id        Int      @id @default(autoincrement())
+  text      String
   createdAt DateTime @default(now())
   // updatedAt DateTime @updatedAt @default(now())
-  tweetId Int
-  tweet Tweet @relation(fields: [tweetId], references: [id])
-  authorId Int
-  author User @relation(fields: [authorId], references: [id])
+  tweetId   Int
+  tweet     Tweet    @relation(fields: [tweetId], references: [id])
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
 }
